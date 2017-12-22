@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.views.generic import CreateView, ListView, DetailView
 
 from .models import Tweet
-from .mixins import FormUserNeededMixin
+from .mixins import FormUserNeededMixin, UserOwnerMixin
 from .forms import TweetModelForm
 
 
@@ -19,3 +19,10 @@ class TweetListView(DetailView):
 
 class TweetDetailView(DetailView):
     queryset = Tweet.objects.all()
+
+
+class TweetUpdateView(LoginRequiredMixin, UserOwnerMixin, UpdateView):
+    queryset = Tweet.objects.all()
+    form_class = TweetModelForm
+    template_name = 'tweets/update_view.html'
+    success_url = '/tweet/'
