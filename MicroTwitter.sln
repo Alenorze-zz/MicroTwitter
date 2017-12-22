@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "microtw", "microtw\microtw.pyproj", "{8BEF1FE6-3625-418D-B4F4-2FD2E2D4A6AC}"
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "microtw", "src\microtw.pyproj", "{8BEF1FE6-3625-418D-B4F4-2FD2E2D4A6AC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
