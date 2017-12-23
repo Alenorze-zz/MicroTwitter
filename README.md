@@ -1,4 +1,4 @@
-![Tweetme Logo](https://i.imgur.com/Y97pZVx.jpg)
+![MicroTwitter Logo](https://i.imgur.com/Y97pZVx.jpg)
 
 # MicroTwitter
 
