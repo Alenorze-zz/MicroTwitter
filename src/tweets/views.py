@@ -29,8 +29,7 @@ class TweetUpdateView(LoginRequiredMixin, UserOwnerMixin, UpdateView):
 class TweetDeleteView(LoginRequiredMixin, DeleteView):
     model = Tweet
     template_name = 'tweets/delete_confirm.html'
-    success_url = reverse_lazy("home")
-
+    success_url = reverse_lazy("tweet:list")
 
 
 class TweetDetailView(DetailView):
@@ -38,18 +37,17 @@ class TweetDetailView(DetailView):
 
 
 class TweetListView(ListView):
-    queryset = Tweet.objects.all()
-
+    def get_queryset(self, *args, **kwargs):
+        qs = Tweet.objects.all()
+        query = self.request.GET.get("q", None)
+        if query is not None:
+            qs = qs.filter(
+                Q(content__icontains=query) |
+                Q(user__username__icontains=query)
+            )
+        return qs
+    
     def get_context_data(self, *args, **kwargs):
         context = super(TweetListView, self).get_context_data(*args, **kwargs)
         return context
 
-
-def tweet_detail_view(request, pk=None): # pk == id
-    #obj = Tweet.objects.get(pk=pk) # GET from database
-    obj = get_object_or_404(Tweet, pk=pk)
-    print(obj)
-    context = {
-        "object": obj
-    }
-    return render(request, "tweets/detail_view.html", context)
