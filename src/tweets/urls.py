@@ -5,10 +5,11 @@ from .views import (
     TweetCreateView,
     TweetDeleteView,
     TweetDetailView,
-
     TweetListView,
     TweetUpdateView
     )
+
+app_name = 'tweets'
 
 urlpatterns = [
     url(r'^$', TweetListView.as_view(), name='list'), # /tweet/
