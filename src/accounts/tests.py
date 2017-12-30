@@ -1,25 +1,21 @@
-"""
-This file demonstrates writing tests using the unittest module. These will pass
-when you run "manage.py test".
-
-Replace this with more appropriate tests for your application.
-"""
-
-import django
+from django.contrib.auth import get_user_model
 from django.test import TestCase
 
-# TODO: Configure your database in settings.py and sync before running tests.
+from .models import UserProfile
 
-class SimpleTest(TestCase):
-    """Tests for the application views."""
+User = get_user_model()
 
-    # Django requires an explicit setup() when running tests in PTVS
-    @classmethod
-    def setUpClass(cls):
-        django.setup()
 
-    def test_basic_addition(self):
-        """
-        Tests that 1 + 1 always equals 2.
-        """
-        self.assertEqual(1 + 1, 2)
+class UserProfileTestCase(TestCase):
+    def setUp(self):
+        self.username = "some_user"
+        new_user = User.objects.create(username=self.username)
+
+    def test_profile_created(self):
+        username = self.username
+        user_profile = UserProfile.objects.filter(user__username=self.username)
+        self.assertTrue(user_profile.exists())
+        self.assertTrue(user_profile.count() == 1)
+
+    def test_new_user(self):
+        new_user = User.objects.create(username=self.username + "abcsd")
