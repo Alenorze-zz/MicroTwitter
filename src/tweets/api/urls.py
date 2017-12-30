@@ -6,6 +6,8 @@ from .views import (
     TweetListAPIView
     )
 
+app_name = 'tweet-api'
+
 
 urlpatterns = [
     url(r'^$', TweetListAPIView.as_view(), name='list'),
