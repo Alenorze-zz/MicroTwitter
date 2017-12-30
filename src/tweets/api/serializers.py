@@ -5,6 +5,7 @@ from accounts.api.serializers import UserDisplaySerializer
 
 
 class TweetModelSerializer(serializers.ModelSerializer):
+    user = UserDisplaySerializer(read_only=True)
     class Meta:
         model = Tweet
         fields = [
