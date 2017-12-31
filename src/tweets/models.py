@@ -23,7 +23,7 @@ class TweetManager(models.Manager):
 
 
 class Tweet(models.Model):
-    patent    = models.ForeignKey("self", blank=True, null=True)
+    patent    = models.ForeignKey("self", blank=True, null=True, on_delete=models.CASCADE)
     user      = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     content   = models.CharField(max_length=140, validators=[validate_content])
     updated   = models.DateTimeField(auto_now=True)
