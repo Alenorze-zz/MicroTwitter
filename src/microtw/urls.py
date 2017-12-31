@@ -5,7 +5,6 @@ from django.conf.urls.static import static
 
 from hashtags.views import HashTagView
 from tweets.views import TweetListView
-from .views import home
 
 
 urlpatterns = [
