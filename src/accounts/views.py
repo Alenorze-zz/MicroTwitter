@@ -17,7 +17,7 @@ class UserDetailView(DetailView):
     def get_object(self):
         return get_object_or_404(
                     User,
-                    username_iexact=self.kwargs.get("username")
+                    username__iexact=self.kwargs.get("username")
                     )   
 
     def get_context_data(self, *args, **kwargs):
