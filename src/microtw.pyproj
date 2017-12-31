@@ -38,6 +38,13 @@
     <Compile Include="accounts\tests.py" />
     <Compile Include="accounts\views.py" />
     <Compile Include="accounts\__init__.py" />
+    <Compile Include="hashtags\admin.py" />
+    <Compile Include="hashtags\apps.py" />
+    <Compile Include="hashtags\migrations\__init__.py" />
+    <Compile Include="hashtags\models.py" />
+    <Compile Include="hashtags\tests.py" />
+    <Compile Include="hashtags\views.py" />
+    <Compile Include="hashtags\__init__.py" />
     <Compile Include="manage.py" />
     <Compile Include="microtw\__init__.py" />
     <Compile Include="microtw\settings.py" />
@@ -55,6 +62,9 @@
     <Folder Include="accounts\" />
     <Folder Include="accounts\migrations\" />
     <Folder Include="accounts\templates\" />
+    <Folder Include="hashtags\" />
+    <Folder Include="hashtags\migrations\" />
+    <Folder Include="hashtags\templates\" />
     <Folder Include="microtw\" />
     <Folder Include="tweets\" />
     <Folder Include="tweets\migrations\" />
@@ -62,6 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="accounts\templates\index.html" />
+    <Content Include="hashtags\templates\index.html" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
     <Content Include="tweets\templates\index.html" />
