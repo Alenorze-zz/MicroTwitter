@@ -1,7 +1,10 @@
+import re
+
 from django.conf import settings
 from django.urls import reverse
 from django.core.exceptions import ValidationError
 from django.db import models
+from django.db.models.signals import post_save
 from django.utils import timezone
 
 from .validators import validate_content
@@ -51,3 +54,15 @@ class Tweet(models.Model):
 
     class Meta:
         ordering = ['-timestamp']
+
+
+def tweet_save_receiver(sender, instance, created, *args, **kwargs):
+    if created and not instance.parent:
+
+        user_regex = r'@(?P<username>[\w.@+-]+)'
+        usernames = re.findall(hash_regex, instance.content)
+
+        hash_regex = r'#(?P<hashtag>[\w\d-]+)'
+        hashtags = re.findall(hash_regex, instance.content)
+
+post_save.connect(tweet_save_receiver, sender=Tweet)
