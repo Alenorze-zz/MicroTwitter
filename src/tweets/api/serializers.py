@@ -22,16 +22,16 @@ class ParentTweetModelSerializer(serializers.ModelSerializer):
             'date_display',
             'timesince',
             'likes',
-            'did_like'
+            # 'did_like'
         ]
     
-    def get_did_like(self, obj):
-        request = self.context.get("request")
-        user = request.user
-        if user.is_authenticated():
-            if user in obj.liked.all():
-                return True
-        return False
+    # def get_did_like(self, obj):
+    #     request = self.context.get("request")
+    #     user = request.user
+    #     if user.is_authenticated():
+    #         if user in obj.liked.all():
+    #             return True
+    #     return False
 
     def get_likes(self, obj):
         return obj.liked.all().count()
