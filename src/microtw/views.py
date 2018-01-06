@@ -1,8 +1,8 @@
 from django.contrib.auth import get_user_model
 from django.db.models import Q
 from django.shortcuts import render
-
 from django.views import View
+
 
 def home(request):
     return render(request, "home.html", {})
@@ -16,8 +16,8 @@ class SearchView(View):
         qs = None
         if query:
             qs = User.objects.filter(
-                Q(username__icontains=query)
-            )
+                    Q(username__icontains=query)
+                )
         context = {"users": qs}
         return render(request, "search.html", context)
     
